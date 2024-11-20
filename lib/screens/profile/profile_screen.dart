@@ -40,12 +40,12 @@ class ProfileScreen extends StatelessWidget {
             items: [
               _buildStatCard(
                 icon: Icons.favorite,
-                label: 'Liked Places',
+                label: 'Liked Items',
                 value: '12',
               ),
               _buildStatCard(
-                icon: Icons.hotel,
-                label: 'Saved Hotels',
+                icon: Icons.shopping_cart,
+                label: 'Cart',
                 value: '8',
               ),
             ],

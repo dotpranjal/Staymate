@@ -1,8 +1,8 @@
 // lib/screens/places/places_screen.dart
 import 'package:flutter/material.dart';
 
-class PlacesScreen extends StatelessWidget {
-  const PlacesScreen({super.key});
+class TrendingScreen extends StatelessWidget {
+  const TrendingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class PlacesScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Popular Places',
+            'Trending Products',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -24,7 +24,7 @@ class PlacesScreen extends StatelessWidget {
               itemCount: samplePlaces.length,
               itemBuilder: (context, index) {
                 final place = samplePlaces[index];
-                return PlaceCard(place: place);
+                return TrendingCard(place: place);
               },
             ),
           ),
@@ -34,10 +34,10 @@ class PlacesScreen extends StatelessWidget {
   }
 }
 
-class PlaceCard extends StatelessWidget {
+class TrendingCard extends StatelessWidget {
   final Map<String, dynamic> place;
 
-  const PlaceCard({super.key, required this.place});
+  const TrendingCard({super.key, required this.place});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class PlaceCard extends StatelessWidget {
             ),
             child: Center(
               child: Image.network(
-              'https://cdn.mos.cms.futurecdn.net/z3rNHS9Y6PV6vbhH8w83Yn-1200-80.jpg',
+                place['image'],
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.cover),
@@ -121,16 +121,18 @@ class PlaceCard extends StatelessWidget {
 
 final List<Map<String, dynamic>> samplePlaces = [
   {
-    'name': 'Eiffel Tower',
-    'description': 'Iconic iron lattice tower on the Champ de Mars in Paris.',
+    'name': 'Lint Cleaner',
+    'description': 'Iconic lint cleaning machine.',
     'rating': 4.8,
-    'location': 'Paris, France',
+    'location': 'Philips',
+    'image': 'https://img.kwcdn.com/product/temu-avi/image-crop/e52d59d7-ac7c-4846-bcb7-d52ebec9931b.jpg',
   },
   {
-    'name': 'Colosseum',
-    'description': 'Ancient amphitheater in the heart of Rome.',
+    'name': 'White House',
+    'description': 'Ancient amphitheater in the heart of US.',
     'rating': 4.7,
-    'location': 'Rome, Italy',
+    'location': 'USA',
+    'image': 'https://media.architecturaldigest.com/photos/6559735fb796d428bef00d25/16:9/w_1280,c_limit/GettyImages-1731443210.jpg'
   },
   // Add more places as needed
 ];

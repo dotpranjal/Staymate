@@ -1,63 +1,63 @@
-// lib/screens/hotels/hotels_screen.dart
+// lib/screens/products/products_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
-class HotelsScreen extends StatefulWidget {
-  const HotelsScreen({super.key});
+class ProductScreen extends StatefulWidget {
+  const ProductScreen({super.key});
 
   @override
-  State<HotelsScreen> createState() => _HotelsScreenState();
+  State<ProductScreen> createState() => _ProductScreenState();
 }
 
-class _HotelsScreenState extends State<HotelsScreen> {
+class _ProductScreenState extends State<ProductScreen> {
   final CardSwiperController controller = CardSwiperController();
 
-  // Sample hotel data
-  final List<Map<String, dynamic>> hotels = [
+  // Sample product data
+  final List<Map<String, dynamic>> products = [
     {
-      'name': 'Luxury Palace Hotel',
+      'name': 'Lint Cleaner',
       'price': 499,
       'rating': 4.8,
-      'location': 'Dubai, UAE',
-      'description': 'Experience ultimate luxury with panoramic city views',
-      'amenities': ['Spa', 'Pool', 'Fine Dining', '24/7 Service'],
-      'image': 'https://www.tourmyindia.com/blog//wp-content/uploads/2022/10/Best-Five-Star-Luxury-Hotels-in-Delhi.jpg',
+      'location': 'Nova',
+      'description': 'An all purpose lint cleaner',
+      'amenities': ['Cheap', 'Nova', 'Lint', 'Recommended'],
+      'image': 'https://m.media-amazon.com/images/I/71urPVaYv8L.jpg',
     },
     {
-      'name': 'Seaside Resort & Spa',
+      'name': 'Sports Bag',
       'price': 299,
       'rating': 4.6,
-      'location': 'Maldives',
-      'description': 'Private beach paradise with overwater bungalows',
-      'amenities': ['Private Beach', 'Spa', 'Water Sports', 'Infinity Pool'],
-      'image': 'https://example.com/seaside-resort.jpg',
+      'location': 'Skybags',
+      'description': 'Multi purpose bag',
+      'amenities': ['Private', 'Spa', 'Water Sports', 'Infinity Pool'],
+      'image': 'https://nwscdn.com/media/wysiwyg/2021/BagOpen_-_Soccer-Bag.jpg',
     },
     {
-      'name': 'Mountain View Lodge',
+      'name': 'Toblerone',
       'price': 199,
       'rating': 4.7,
       'location': 'Swiss Alps',
-      'description': 'Cozy mountain retreat with breathtaking views',
-      'amenities': ['Skiing', 'Restaurant', 'Fireplace', 'Hiking Trails'],
-      'image': 'https://example.com/mountain-lodge.jpg',
+      'description': 'Cadbury chocolate with smooth texture',
+      'amenities': ['Smooth', 'Chocolates', 'Fireplace', 'Trails'],
+      'image': 'https://media.istockphoto.com/id/458095163/photo/toblerone-chocolate-bar.jpg?s=612x612&w=0&k=20&c=kLwKfMtCswfN0SWzkEMW-PrpgGAfCK-hZBrJdtCOzDE=',
     },
     {
-      'name': 'Urban Boutique Hotel',
+      'name': 'Deodrant Inspire',
       'price': 249,
       'rating': 4.5,
-      'location': 'New York, USA',
-      'description': 'Modern luxury in the heart of Manhattan',
-      'amenities': ['Rooftop Bar', 'Gym', 'Restaurant', 'Business Center'],
-      'image': 'https://example.com/urban-boutique.jpg',
+      'location': 'KS',
+      'description': 'Modern luxury',
+      'amenities': ['Bar', 'Deo', 'Restore', 'Fragnance'],
+      'image': 'https://m.media-amazon.com/images/I/61HJyR+i8LL.jpg',
     },
     {
-      'name': 'Tropical Paradise Resort',
+      'name': 'Tropical Chocolates',
       'price': 399,
       'rating': 4.9,
-      'location': 'Bali, Indonesia',
-      'description': 'Luxurious villas surrounded by tropical gardens',
-      'amenities': ['Private Pool', 'Yoga Center', 'Beach Access', 'Spa'],
-      'image': 'https://example.com/tropical-paradise.jpg',
+      'location': 'Cadbury',
+      'description': 'Luxurious chocolates',
+      'amenities': ['Pool', 'Yoga Bar', 'Access', 'Sweets'],
+      'image': 'https://m.media-amazon.com/images/I/41ywosPQZyL._AC_UF1000,1000_QL80_.jpg',
     },
   ];
 
@@ -82,7 +82,7 @@ class _HotelsScreenState extends State<HotelsScreen> {
                     child: const TextField(
                       decoration: InputDecoration(
                         icon: Icon(Icons.search),
-                        hintText: 'Search hotels...',
+                        hintText: 'Search products...',
                         border: InputBorder.none,
                       ),
                     ),
@@ -102,14 +102,14 @@ class _HotelsScreenState extends State<HotelsScreen> {
           Expanded(
             child: CardSwiper(
               controller: controller,
-              cardsCount: hotels.length,
+              cardsCount: products.length,
               onSwipe: _onSwipe,
               onUndo: _onUndo,
               numberOfCardsDisplayed: 2,
               backCardOffset: const Offset(40, 40),
               padding: const EdgeInsets.all(24.0),
               cardBuilder: (context, index, horizontalThreshold, verticalThreshold) => 
-                HotelSwipeCard(hotel: hotels[index]),
+                ProductSwipeCard(product: products[index]),
             ),
           ),
           const SizedBox(height: 20),
@@ -153,16 +153,16 @@ class _HotelsScreenState extends State<HotelsScreen> {
   }
 
   bool _onSwipe(int previousIndex, int? currentIndex, CardSwiperDirection direction) {
-    final hotel = hotels[previousIndex];
+    final product = products[previousIndex];
     switch (direction) {
       case CardSwiperDirection.right:
-        debugPrint('Liked: ${hotel['name']}');
+        debugPrint('Liked: ${product['name']}');
         break;
       case CardSwiperDirection.left:
-        debugPrint('Disliked: ${hotel['name']}');
+        debugPrint('Disliked: ${product['name']}');
         break;
       case CardSwiperDirection.top:
-        debugPrint('Saved: ${hotel['name']}');
+        debugPrint('Saved: ${product['name']}');
         break;
       default:
         break;
@@ -176,10 +176,10 @@ class _HotelsScreenState extends State<HotelsScreen> {
   }
 }
 
-class HotelSwipeCard extends StatelessWidget {
-  final Map<String, dynamic> hotel;
+class ProductSwipeCard extends StatelessWidget {
+  final Map<String, dynamic> product;
 
-  const HotelSwipeCard({super.key, required this.hotel});
+  const ProductSwipeCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -190,15 +190,15 @@ class HotelSwipeCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         child: Stack(
           children: [
-            // Hotel image (placeholder)
+            // product image (placeholder)
             Image.network(
-              'https://www.tourmyindia.com/blog//wp-content/uploads/2022/10/Best-Five-Star-Luxury-Hotels-in-Delhi.jpg',
+                product['image'],
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.cover),
 
             
-            // Hotel information
+            // product information
             Positioned(
               bottom: 0,
               left: 0,
@@ -223,7 +223,7 @@ class HotelSwipeCard extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            hotel['name'],
+                            product['name'],
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 24,
@@ -241,7 +241,7 @@ class HotelSwipeCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
-                            '\$${hotel['price']}/night',
+                            '\$${product['price']}',
                             style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -260,7 +260,7 @@ class HotelSwipeCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          hotel['location'],
+                          product['location'],
                           style: TextStyle(
                             color: Colors.white.withOpacity(0.8),
                             fontSize: 16,
@@ -274,7 +274,7 @@ class HotelSwipeCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          '${hotel['rating']}',
+                          '${product['rating']}',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -284,7 +284,7 @@ class HotelSwipeCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      hotel['description'],
+                      product['description'],
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.8),
                         fontSize: 16,
@@ -294,7 +294,7 @@ class HotelSwipeCard extends StatelessWidget {
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
-                      children: (hotel['amenities'] as List<String>)
+                      children: (product['amenities'] as List<String>)
                           .map((amenity) => Container(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 8,

@@ -36,9 +36,9 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 1; // Start with home screen
 
   final List<Widget> _screens = [
-    const PlacesScreen(),
+    const TrendingScreen(),
     const HomeScreen(),
-    const HotelsScreen(),
+    const ProductScreen(),
     const ProfileScreen(),
   ];
 
@@ -47,7 +47,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Staymate',
+          'Prodify',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -66,16 +66,16 @@ class _MainScreenState extends State<MainScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.place),
-            label: 'Places',
+            icon: Icon(Icons.trending_up),
+            label: 'Trending',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.hotel),
-            label: 'Hotels',
+            icon: Icon(Icons.shopping_bag),
+            label: 'Products',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
