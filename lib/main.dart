@@ -1,5 +1,6 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
+import 'package:tinder/services/login_service.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/places/places_screen.dart';
 import 'screens/hotels/hotels_screen.dart';
@@ -20,7 +21,7 @@ class PinderApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MainScreen(),
+      home: LoginService(),
     );
   }
 }
